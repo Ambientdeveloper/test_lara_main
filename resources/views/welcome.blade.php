@@ -67,28 +67,43 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
-                    @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
-                    @endif
-                </div>
+            <div class="top-right links">
+                @if (Auth::check())
+                <a href="{{ url('/home') }}">Home</a>
+                @else
+                <a href="{{ url('/login') }}">Login</a>
+                <a href="{{ url('/register') }}">Register</a>
+                @endif
+            </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                <table class="table table-bordered table-hover" >
+                    <thead>
+                    <th>Name</th>
+                    <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        @foreach($book as $b)
+                        <tr>
+                            <td>{{ $b->id }}</td>
+                            <td>{{ $b->name }}</td>
+                            <td>{{ $b->author_name }}</td>
+                            <td>{{ $b->price }}</td>
+                            <td>{{ $b->stock_id }}</td>
+                            <td>
+                                {!! Form::open(['method'=>'DELETE', 'route'=>['welcome.destroy',$b->id]]) !!}
+                                
+                                <button data-toggle="tooltip" data-placement="top" title="Delete" type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete this item?');"><span class="glyphicon glyphicon-remove"></span></button>
+                                {!! Form::close() !!}
+                            </td>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+
             </div>
         </div>
     </body>
