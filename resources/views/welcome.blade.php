@@ -14,7 +14,6 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
@@ -50,7 +49,6 @@
             }
 
             .links > a {
-                color: #636b6f;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -80,7 +78,11 @@
             <div class="content">
                 <table class="table table-bordered table-hover" >
                     <thead>
-                    <th>Name</th>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>author</th>
+                    <th>price</th>
+                    <th>sock id</th>
                     <th>Actions</th>
                     </thead>
                     <tbody>
@@ -94,7 +96,7 @@
                             <td>
                                 {!! Form::open(['method'=>'DELETE', 'route'=>['welcome.destroy',$b->id]]) !!}
                                 
-                                <button data-toggle="tooltip" data-placement="top" title="Delete" type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete this item?');"><span class="glyphicon glyphicon-remove"></span></button>
+                                <button data-toggle="tooltip" data-placement="top" title="Delete" type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete this item?');"><span class="glyphicon glyphicon-remove">Remove</span></button>
                                 {!! Form::close() !!}
                             </td>
 
